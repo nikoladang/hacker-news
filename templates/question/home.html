@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <form method="POST" action="">
+        <input type="hidden" name="question_id" value="{{ instance.id }}">
+        {{ form.as_p }}
+        {% for question in queryset %}
+            <li>{{ question.text }}
+                <ul>
+                    {% for ans in  question.answer_set.all %}
+                        <li>{{ ans.text }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </form>
+
+{% endblock %}
