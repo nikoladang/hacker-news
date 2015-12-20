@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'question.views.home', name="question"),
+    url(r'^question/(?P<id>\d+)/$', 'question.views.single', name="question_single"),
+    url(r'^question/$', 'question.views.home', name="question_home"),
 ]

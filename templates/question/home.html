@@ -3,18 +3,20 @@
 {% block content %}
 
 
-    <form method="POST" action="">
+    <form method="POST" action="">{% csrf_token %}
         <input type="hidden" name="question_id" value="{{ instance.id }}">
         {{ form.as_p }}
-        {% for question in queryset %}
-            <li>{{ question.text }}
+{#        {% for question in queryset %}#}
+            <h1>{{ instance.text }}</h1>
                 <ul>
-                    {% for ans in  question.answer_set.all %}
-                        <li>{{ ans.text }}</li>
+                    {% for ans in instance.answer_set.all %}
+                        <li><input type="radio" name="answer_id" value="{{ ans.id }}" />
+                        {{ ans.text }}</li>
                     {% endfor %}
                 </ul>
-            </li>
-        {% endfor %}
+            </h1>
+{#        {% endfor %}#}
+        <input type="submit" value="Save and continue">
     </form>
 
 {% endblock %}
