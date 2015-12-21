@@ -5,7 +5,7 @@
 
     <form method="POST" action="">{% csrf_token %}
         <input type="hidden" name="question_id" value="{{ instance.id }}">
-        {{ form.as_p }}
+{#        {{ form.as_p }}#}
 {#        {% for question in queryset %}#}
             <h1>{{ instance.text }}</h1>
                 <ul>

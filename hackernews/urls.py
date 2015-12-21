@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^question/(?P<id>\d+)/$', 'question.views.single', name="question_single"),
     url(r'^question/$', 'question.views.home', name="question_home"),
+    url(r'^news/$', 'news.views.home', name="news_home"),
 ]
