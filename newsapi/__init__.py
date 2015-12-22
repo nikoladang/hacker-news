@@ -1,0 +1,1 @@
+# https://ultimatedjango.com/blog/how-to-consume-rest-apis-with-django-python-reques/

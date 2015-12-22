@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^question/(?P<id>\d+)/$', 'question.views.single', name="question_single"),
     url(r'^question/$', 'question.views.home', name="question_home"),
-    url(r'^news/$', 'news.views.home', name="news_home"),
+    # url(r'^news/$', 'news.views.home_firebase', name="news_homeFirebase"),
+    url(r'^news/$', 'newsapi.views.newsapi_home', name="newsapi_home"),
+    # url(r'^', 'embedly.views.save_embed', name="embedly")
 ]

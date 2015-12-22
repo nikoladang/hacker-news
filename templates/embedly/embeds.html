@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul>
+        <li>{{ embed.title }}</li>
+        <li>{{ embed.description }}</li>
+    </ul>
+    <img src="{{ embed.thumbnail_url }}" alt="">
+{% endblock %}

@@ -37,8 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'question',
     'firebase',
+    'rest_framework',
+    'question',
+    'newsapi',
+    'embedly'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -102,3 +105,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMBEDLY_KEY = 'd76a53b471354b03a290646d41b8557c'
