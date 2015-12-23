@@ -1,2 +1,27 @@
 {% extends "base.html" %}
 
+{% block content %}
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+    {% with baseurl="https://news.ycombinator.com/item?id=" %}
+    {% for item in result %}
+{#        {{ a }}<br/>#}
+        <a href="{{ item.url }}" target='_blank'>{{ item.title }}</a><br/>
+        <a href="{{ baseurl }}{{ item.objectID }}" target='_blank'>(comments)</a><br/>
+        <br/>
+    {% endfor %}
+    {% endwith %}
+
+{% endblock %}

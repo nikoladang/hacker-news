@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^question/$', 'question.views.home', name="question_home"),
     # url(r'^news/$', 'news.views.home_firebase', name="news_homeFirebase"),
     url(r'^news/$', 'newsapi.views.newsapi_home', name="newsapi_home"),
+    url(r'^news/(?P<date>\d+)/$', 'newsapi.views.newsapi_home', name="newsapi_home"),
     # url(r'^', 'embedly.views.save_embed', name="embedly")
 ]
+
