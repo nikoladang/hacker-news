@@ -9,6 +9,22 @@ import json
 from .forms import SubmitEmbed
 from .serializer import EmbedSerializer
 
+'''
+Get top stories from HN with highests points
+Return: dict
+'''
+def get_top_stories_single_day(year, month, day, story_count=10):
+    begintime = datetime(year,month,day-1).timestamp()
+    endtime = date2 = datetime(year,month,day-1,23,59,59).timestamp()
+    aList = get_story(begintime,endtime)
+    sortedHnValueList = sorted(aList, key=itemgetter('points'), reverse=True)[:story_count]
+    dictResult = {}
+    # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
+    dictResult['hnDate'] = datetime(year,month,day).strftime('%Y-%m-%d')
+    dictResult['hnValue'] = sortedHnValueList
+    return dictResult
+
+
 
 def get_story(timestamp1, timestamp2):
     # url = 'http://hn.algolia.com/api/v1/search_by_date?tags=story&numericFilters=created_at_i>'+str(timestamp1)+',created_at_i<'+str(timestamp2)
@@ -24,7 +40,6 @@ def get_story(timestamp1, timestamp2):
 
 
 def newsapi_home(request):
-
     today = datetime.now()
     curYear = today.year
     curMonth = today.month
@@ -52,14 +67,17 @@ def newsapi_home(request):
     newlist = sorted(result, key=itemgetter('points'), reverse=True)[:10]
     # print(json.dumps(newlist, indent=2))
 
-    newdict = {}
-    newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
-    print(newdict['hnDate'])
-    newdict['hnValue'] = newlist
-    print(type(newlist))
+    # newdict = {}
+    # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
+    # print(newdict['hnDate'])
+    # newdict['hnValue'] = newlist
+    # print(type(newlist))
+
+    resultDict = get_top_stories_single_day(curYear,curMonth,curDay-1)
     resultList = []
-    resultList.append(newdict)
-    print(newdict)
+    resultList.append(resultDict)
+    print(resultList)
+
 
 
     return render(request, "news/home2.html", {"result": resultList})
