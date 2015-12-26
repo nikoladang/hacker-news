@@ -54,38 +54,13 @@ def newsapi_home(request):
     curYear = today.year
     curMonth = today.month
     curDay = today.day
-    date1 = datetime(curYear,curMonth,curDay-1).timestamp()
-    date2 = datetime(curYear,curMonth,curDay-1,23,59,59).timestamp()
-
-    # # currentDate = date.today()
-    # currentDate = datetime.now()
-    # print(currentDate.date().ctime())
-    # print(currentDate)
-    # print(date1)
-    # print(date2)
-    # date3 = (currentDate - timedelta(days=1)).timetuple()
-    # print(date3)
-    # # print(date2-date1)
-    # # for item in newlist:
-    # #     print(item['title'])
-    # #     print(item['url'])
-    # #     print(item['objectID'])
 
     # print(json.dumps(newlist, indent=2))
 
-    # newdict = {}
-    # newdict['hnDate'] = datetime.fromtimestamp(date1).strftime('%Y-%d-%m')
-    # print(newdict['hnDate'])
-    # newdict['hnValue'] = newlist
-    # print(type(newlist))
-
-    # resultDict = get_top_stories_single_day(curYear,curMonth,curDay-1)
-    # resultList = []
-    # resultList.append(resultDict)
 
     chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
     sidebarDates = get_sidebarDates(curYear,curMonth,curDay-1)
-    resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=2)
+    resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=0)
 
     context = {
         "chosenDate": chosenDate,
