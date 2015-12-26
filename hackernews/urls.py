@@ -21,8 +21,10 @@ urlpatterns = [
     url(r'^question/(?P<id>\d+)/$', 'question.views.single', name="question_single"),
     url(r'^question/$', 'question.views.home', name="question_home"),
     # url(r'^news/$', 'news.views.home_firebase', name="news_homeFirebase"),
+    # url(r'^news/(?P<adate>\d{4}-\d{2}-\d{2})/$', 'newsapi.views.newsapi_home_adate', name="newsapi_home_adate"),
     url(r'^news/$', 'newsapi.views.newsapi_home', name="newsapi_home"),
-    url(r'^news/(?P<date>\d+)/$', 'newsapi.views.newsapi_home', name="newsapi_home"),
+    url(r'^news/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'newsapi.views.newsapi_home_adate', name="newsapi_home_adate"),
+    # url(r'^news/(?P<year>\d{4})/$', 'newsapi.views.newsapi_home_adate', name="newsapi_home_adate"),
     # url(r'^', 'embedly.views.save_embed', name="embedly")
 ]
 

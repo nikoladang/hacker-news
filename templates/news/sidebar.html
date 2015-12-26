@@ -1,9 +1,22 @@
-        <div class="col-sm-3 col-md-2 sidebar">
+ <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="{% url 'newsapi_home' %}">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+{#            {% now "Y" as curYear %}#}
+{#            {% now "m" as curMonth %}#}
+{#            {% now "d" as curDay %}#}
+{#              {% with curYear|add:"-"|add:curMonth|add:"-"|add:curDay as curDate%}#}
+                  {% for value in sidebarDates %}
+                  <li>
+                      <a href="{% url "newsapi_home_adate" year=value.year month=value.month day=value.day %}">
+                        {% if chosenDate == value.year|add:"-"|add:value.month|add:"-"|add:value.day %}
+                            > {{ value.year }}-{{ value.month }}-{{ value.day }}
+                        {% else %}
+                            {{ value.year }}-{{ value.month }}-{{ value.day }}
+                        {% endif %}
+                       </a>
+                  </li>
+                  {% endfor %}
+{#              {% endwith %}#}
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
