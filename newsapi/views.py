@@ -60,7 +60,7 @@ def newsapi_home(request):
 
     chosenDate = (today-timedelta(days=1)).strftime("%Y-%m-%d")
     sidebarDates = get_sidebarDates(curYear,curMonth,curDay-1)
-    resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=0)
+    resultList2 = get_top_stories_multi_days(curYear, curMonth, curDay-1, day_count=3)
 
     context = {
         "chosenDate": chosenDate,
